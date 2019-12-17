@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<title>Insert title here</title>
+</head>
+<body>
+ 	
+	<center>
+ 		<h5>formulaire de Prise de RDV</h5>
+	</center>
+ 	<form>
+	  <div class="col-sm-4">
+	    <label for="exampleInputPassword1">Prenom</label>
+	    <input type="text" class="form-control" id="prenom1" placeholder="votre prenom">
+	  </div>
+	  <div class="col-sm-4">
+	    <label for="exampleInputPassword1">Nom</label>
+	    <input type="text" class="form-control" id="nom1" placeholder="votre nom">
+	  </div>
+	  <div class="col-sm-4">
+	    <label for="exampleInputEmail1">Adresse Email</label>
+	    <input type="email" class="form-control" id="eadresseEmail1" aria-describedby="emailHelp" placeholder="votre email">
+	  </div>
+	  <div class="col-sm-4">
+	    <label for="exampleInputPassword1">Raison de la visite</label>
+	  </div>
+	  <div class="col-sm-4">
+	    <select name="type">
+		  	<option value = "entretien">entretien</option>
+		  	<option value = "réunion">reunion</option>
+		</select>
+	  </div>
+	  
+	  <div class="col-sm-4">
+	    <label for="exampleInputPassword1">Numero de telephone</label>
+	    <input type="number" class="form-control" id="numeroTelephone1" placeholder="votre numero de telephone">
+	  </div>
+	  <div class="col-sm-4">
+	    <label for="exampleInputPassword1">Adresse de domicile</label>
+	    <input type="text" class="form-control" id="adresseDomicile1" placeholder="votre adresse de domicile">
+	  </div> <!-- plus tard décomposer l'adresse-->
+	  <p>
+	  </p>
+	  <div class="col-sm-4">
+	  	<button type="submit" class="btn btn-success" >prendre le rendez-vous</button>
+	  	<a class="btn btn-warning" href="/planningPriseRDV" role="button">Retour</a>
+	  </div>
+	</form>
+</body>
+</html>
