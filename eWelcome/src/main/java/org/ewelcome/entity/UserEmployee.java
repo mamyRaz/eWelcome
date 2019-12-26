@@ -19,17 +19,22 @@ import javax.validation.constraints.NotNull;
 /**
  *
  * @author refin
+ * Abstraction de l'objet UserEmployee de la bd comme objet métier
  */
 @Entity
 @Table(name = "userEmployee")
 public class UserEmployee implements Serializable{
+   
+   //Pour définir l'identifiant de la table.
    @Id
+   //Pour laisser à Spring le soin de générer un identifiant unique.
    @GeneratedValue(strategy = GenerationType.AUTO) 
    private Long id;
    
    
-   //ajouter relation personne
+   //pour préciser que ce champ ne doit pas rester nul
    @NotNull
+   //Un seul indentifiant employee peut appartenir à une et une personne et vice versa
    @OneToOne(cascade = CascadeType.ALL)
    private Person person;
    
@@ -38,7 +43,22 @@ public class UserEmployee implements Serializable{
    
    @NotNull
    private String SaltHashPassword;
+   
+   /*
+        Un identifiant employee est une entité donc un bean. Un bean doit 
+        posséder un contructeur par défaut, afin que Spring puisse l'instancier
+    */
 
+    public UserEmployee() {
+    }
+
+    public UserEmployee(Long idPerson, String hashPassword, String SaltHashPassword) {
+        this.hashPassword = hashPassword;
+        this.SaltHashPassword = SaltHashPassword;
+    }
+
+   
+   //setters et getters
     public Long getId() {
         return id;
     }
@@ -63,15 +83,6 @@ public class UserEmployee implements Serializable{
         this.SaltHashPassword = SaltHashPassword;
     }
    
-
-    public UserEmployee() {
-    }
-
-    public UserEmployee(Long idPerson, String hashPassword, String SaltHashPassword) {
-        this.hashPassword = hashPassword;
-        this.SaltHashPassword = SaltHashPassword;
-    }
-
     public Person getPerson() {
         return person;
     }

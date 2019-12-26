@@ -11,6 +11,8 @@ import org.ewelcome.entity.TypeMeeting;
 /**
  *
  * @author refin
+ * * Couche service, couche intermédiaire
+ * On y définit les méthodes dont on a besoin.
  */
 public interface TypeMeetingService {
     TypeMeeting save(TypeMeeting entity);

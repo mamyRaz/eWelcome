@@ -18,8 +18,10 @@ import org.springframework.stereotype.Service;
  * @author refin
  */
 @Component
+//@Service est une annotation qui spécialise @Component. Elle indique une classe métier.
 @Service
 public class TypeMeetingServiceImpl implements TypeMeetingService{
+    //@Autowired permet d'injecter automatiquement la bonne dépendance.
     @Autowired
     TypeMeetingRepository typeMeetingRepository;
 

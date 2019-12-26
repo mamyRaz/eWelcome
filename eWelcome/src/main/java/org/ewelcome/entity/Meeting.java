@@ -26,16 +26,22 @@ import javax.validation.constraints.NotNull;
 /**
  *
  * @author refin
+ * Abstraction de l'objet Meeting de la bd comme objet métier 
  */
 @Entity
 @Table(name = "meeting")
 public class Meeting implements Serializable{
+   
+    //Pour définir l'identifiant de la table.
     @Id
+    //Pour laisser à Spring le soin de générer un identifiant unique.
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+    //pour préciser que ce champ ne doit pas rester nul
     @NotNull
-    @ManyToOne //one type of meeting per meeting
+    //Un rdv appartient à une et une seule type rdv @ManyToOne
+    @ManyToOne 
     private TypeMeeting typeMeeting;
     
     @NotNull
@@ -45,6 +51,7 @@ public class Meeting implements Serializable{
     private String reason;
     
     //@NotNull
+    //Plusieurs rdv ont à une ou plusieurs personnes et vice versa @ManyToMany
     @ManyToMany(mappedBy = "meetingList")
     private Set<Person> peopleList = new HashSet<>();
 
@@ -63,9 +70,17 @@ public class Meeting implements Serializable{
         this.peopleList = (Set<Person>) peopleList;
     }
     
+    /*
+        Un rdv est une entité donc un bean. Un bean doit 
+        posséder un contructeur par défaut, afin que Spring puisse l'instancier
+    */
+
+    
     public Meeting(){
         
     }
+    
+    //setters et getters
 
     public Long getId() {
         return id;

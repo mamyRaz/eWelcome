@@ -19,19 +19,29 @@ import javax.validation.constraints.Size;
 /**
  *
  * @author refin
+ * Abstraction de l'objet TypeMeeting de la bd comme objet métier
  */
 @Entity
 @Table(name = "typeMeeting")
 public class TypeMeeting implements Serializable {
+    //Pour définir l'identifiant de la table.
     @Id
+    //Pour laisser à Spring le soin de générer un identifiant unique.
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+    //pour préciser que ce champ ne doit pas rester nul
     @NotNull
+    //Pour préciser que la taille de la chaine
     @Size(min = 5, max = 10)
     private String label;
     
-    @OneToMany(mappedBy = "typeMeeting") // one type of meeting to many meeting
+    /*
+       Un type rdv peut catégoriser plusieurs rdv, c'est une relation bidirectionnelle. 
+       Le paramètre (mappedBy = "typeMeeting") indique que type rdv est la table esclave. 
+       C'est-à-dire que c'est la table rdv/meeting qui contient une clé étrangère "typeMeeting"
+    */
+    @OneToMany(mappedBy = "typeMeeting") 
     private List<Meeting> meetingsList;
     
     
@@ -39,9 +49,16 @@ public class TypeMeeting implements Serializable {
         this.label = label;
     }
     
+    /*
+        Un type rdv est une entité donc un bean. Un bean doit 
+        posséder un contructeur par défaut, afin que Spring puisse l'instancier
+    */
+
     public TypeMeeting(){
         
     }
+    
+    //setters et getters
     public Long getId() {
         return id;
     }

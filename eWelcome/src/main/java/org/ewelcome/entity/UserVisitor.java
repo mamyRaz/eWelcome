@@ -19,25 +19,21 @@ import javax.validation.constraints.NotNull;
 /**
  *
  * @author refin
+ * Abstraction de l'objet UserVisitor de la bd comme objet métier
+ * @Entity pour indiquer que c'est une entité JPA qui sera traduit en table
  */
 @Entity
 @Table(name = "userVisitor")
 public class UserVisitor implements Serializable {
+   //Pour définir l'identifiant de la table.
    @Id
+   //Pour laisser à Spring le soin de générer un identifiant unique.
    @GeneratedValue(strategy = GenerationType.AUTO) 
    private Long id;
-   //ajouter relation personne
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
    
-  
+   //pour préciser que ce champ ne doit pas rester nul
    @NotNull
+   //Un identifiant visiteur appartient à une et une seule personne @ManyToOne
    @ManyToOne
    private Person person;
    
@@ -57,10 +53,25 @@ public class UserVisitor implements Serializable {
         this.theOTP = code;
         this.initialDate = initialDate;
     }
+    
+    /*
+        Un identifiant visiteur est une entité donc un bean. Un bean doit 
+        posséder un contructeur par défaut, afin que Spring puisse l'instancier
+    */
 
     public UserVisitor() {
     }
 
+    //setters et getters
+    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+   
     public int getNbDaysAvailable() {
         return nbDaysAvailable;
     }

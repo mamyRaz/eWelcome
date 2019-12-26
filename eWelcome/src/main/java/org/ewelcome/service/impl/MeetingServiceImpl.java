@@ -19,9 +19,12 @@ import org.ewelcome.service.MeetingService;
  *
  * @author refin
  */
+
+//@Service est une annotation qui spécialise @Component. Elle indique une classe métier.
 @Service
 public class MeetingServiceImpl implements MeetingService {
     
+    //@Autowired permet d'injecter automatiquement la bonne dépendance.
     @Autowired
     MeetingRepository meetingRepository;
     

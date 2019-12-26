@@ -19,17 +19,29 @@ import javax.validation.constraints.Size;
 /**
  *
  * @author refin
+ * Abstraction de l'objet UserRole de la bd comme objet métier
  */
 @Entity
 @Table(name = "userRole")
 public class UserRole implements Serializable {
+    
+    //Pour définir l'identifiant de la table.
     @Id
+    //Pour laisser à Spring le soin de générer un identifiant unique.
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    //pour préciser que ce champ ne doit pas rester nul
     @NotNull
+    //Pour préciser que la taille de la chaine
     @Size(min = 5, max = 10)
     private String label;
     
+    /*
+       Un role peut catégoriser plusieurs personnes, c'est une relation bidirectionnelle. 
+       Le paramètre (mappedBy = "role") indique que role/UserRole est la table esclave. 
+       C'est-à-dire que c'est la table Person est qui contient une clé étrangère "role"
+    */
     
     @OneToMany(mappedBy = "role") // one role to many person
     private List<Person> persons;
@@ -38,9 +50,17 @@ public class UserRole implements Serializable {
         this.label = label;
     }
     
+    
+    /*
+        Un role est une entité donc un bean. Un bean doit 
+        posséder un contructeur par défaut, afin que Spring puisse l'instancier
+    */
+
     public UserRole(){
         
     }
+    
+    //setters et getters
     public Long getId() {
         return id;
     }

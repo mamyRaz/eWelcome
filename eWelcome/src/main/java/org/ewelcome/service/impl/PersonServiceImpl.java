@@ -19,9 +19,10 @@ import org.ewelcome.service.PersonService;
  * @author refin
  */
 @Component
+//@Service est une annotation qui spécialise @Component. Elle indique une classe métier.
 @Service
 public class PersonServiceImpl implements PersonService{
-    
+    //@Autowired permet d'injecter automatiquement la bonne dépendance.
     @Autowired
     PersonRepository personneRepository;
 

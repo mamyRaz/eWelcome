@@ -12,6 +12,8 @@ import org.ewelcome.entity.Person;
 /**
  *
  * @author refin
+ * * Couche service, couche intermédiaire
+ * On y définit les méthodes dont on a besoin.
  */
 public interface PersonService {
     Person save(Person entity);

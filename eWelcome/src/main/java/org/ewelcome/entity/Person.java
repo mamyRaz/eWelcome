@@ -29,15 +29,21 @@ import javax.validation.constraints.Size;
 /**
  *
  * @author refin
+ * Abstraction de l'objet Person de la bd comme objet métier
  */
 @Entity
 @Table(uniqueConstraints = {
     @UniqueConstraint(columnNames = {"email"})}, name = "person")
 public class Person implements Serializable {
+    //Pour définir l'identifiant de la table.
     @Id
+    //Pour laisser à Spring le soin de générer un identifiant unique.
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    //pour préciser que ce champ ne doit pas rester nul
     @NotNull
+    //Pour préciser que la taille de la chaine
     @Size(min = 2, max = 20)
     private String lastName;
     @NotNull
@@ -49,24 +55,26 @@ public class Person implements Serializable {
     @NotNull
     @Size(min = 8, max = 20)
     
-    //private String mdp;ajouter relation table user
+    
     @Size(min = 8, max = 70)
     private String address;
     
-    //gérer la longueur en fonction du pay
     @Size(min = 11, max = 11)
     private int telephoneNumber;
     
-    //ajouter relation role
+    
     @NotNull
-    @ManyToOne //many person to one role
+    //Une personne appartient à un et un seule role @ManyToOne
+    @ManyToOne 
     private UserRole role;
     
     @NotNull
+    //Une personne appartient à un et un identifiant employee et vice versa @OneToOne 
     @OneToOne(mappedBy = "person")
     private UserEmployee userEmployee;
     
     //@NotNull
+    //Plusieurs personnes ont à un ou plusieurs rdv et vice versa@ManyToMany
     @ManyToMany(cascade = { CascadeType.PERSIST
                             ,CascadeType.MERGE})
     @JoinTable(
@@ -92,7 +100,8 @@ public class Person implements Serializable {
      public Person(){
          
      }
-
+     
+    //setters et getters
     public Long getId() {
         return id;
     }

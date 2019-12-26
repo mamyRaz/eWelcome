@@ -13,6 +13,8 @@ import org.ewelcome.entity.Meeting;
 /**
  *
  * @author refin
+ * Couche service, couche intermédiaire
+ * On y définit les méthodes dont on a besoin.
  */
 public interface MeetingService {
     Meeting save(Meeting entity);

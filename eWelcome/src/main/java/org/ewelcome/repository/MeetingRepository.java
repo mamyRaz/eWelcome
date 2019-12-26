@@ -10,7 +10,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
- * @author refin
+    @author refin
+    L'interface JpaRepository possède déjà un certain nombres de méthodes pour faire des requêtes dans la table, 
+    comme par exemple findAll(), deleteById(ID id), save(S entity)
  */
 
 public interface MeetingRepository extends JpaRepository<Meeting, Long>{

@@ -11,6 +11,8 @@ import org.ewelcome.entity.UserRole;
 /**
  *
  * @author refin
+ * * Couche service, couche intermédiaire
+ * On y définit les méthodes dont on a besoin.
  */
 public interface UserRoleService {
     UserRole save(UserRole entity);

@@ -8,11 +8,13 @@ package org.ewelcome.repository;
 import org.ewelcome.entity.UserEmployee;
 import org.ewelcome.entity.UserRole;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+
 
 /**
  *
  * @author refin
+ * L'interface JpaRepository possède déjà un certain nombres de méthodes pour faire des requêtes dans la table, 
+    comme par exemple findAll(), deleteById(ID id), save(S entity)
  */
 
 public interface UserRoleRepository extends JpaRepository<UserEmployee, Long>{

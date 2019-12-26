@@ -10,13 +10,16 @@ import org.ewelcome.entity.UserRole;
 import org.ewelcome.repository.UserRoleRepository;
 import org.ewelcome.service.UserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author refin
  */
+//@Service est une annotation qui spécialise @Component. Elle indique une classe métier.
+@Service
 public class UserRoleServiceImpl implements UserRoleService{
-    
+    //@Autowired permet d'injecter automatiquement la bonne dépendance.
     @Autowired
     UserRoleRepository userRoleRepository;
 

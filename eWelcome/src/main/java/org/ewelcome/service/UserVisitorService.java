@@ -11,6 +11,8 @@ import org.ewelcome.entity.UserVisitor;
 /**
  *
  * @author refin
+ * * Couche service, couche intermédiaire
+ * On y définit les méthodes dont on a besoin.
  */
 public interface UserVisitorService {
      UserVisitor save(UserVisitor entity);
