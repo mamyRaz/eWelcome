@@ -28,6 +28,7 @@ public class PersonServiceImpl implements PersonService{
 
     @Override
     public Person save(Person entity) {
+        //tester si le format d'email es ok ou pas
         return personneRepository.save(entity);
     }
 
@@ -54,6 +55,16 @@ public class PersonServiceImpl implements PersonService{
     @Override
     public Person getOne(Long id) {
         return personneRepository.getOne(id);
+    }
+
+    @Override
+    public int deleteByEmail(String email) {
+        return personneRepository.deleteByEmail(email);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        personneRepository.deleteById(id);
     }
     
 }

@@ -39,10 +39,7 @@ public class URLMapping {
 		return "visiteur/accesApplicationSurPlace";
 	}
 	
-	@GetMapping("/formulairePriseRDV")
-	public String formulairePriseRDV() {
-		return "visiteur/formulairePriseRDV";
-	}
+	
 	@GetMapping("/impressionBadgeMDPWifi")
 	public String impressionBadgeMDPWifi() {
 		return "visiteur/impressionBadgeMDPWifi";

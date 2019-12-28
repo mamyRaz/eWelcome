@@ -25,21 +25,21 @@ public class UserEmployeeServiceImpl implements UserEmployeeService{
 
     @Override
     public UserEmployee save(UserEmployee entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return userEmployeeRepository.save(entity);
     }
 
     @Override
     public void delete(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        userEmployeeRepository.deleteById(id);
     }
 
     @Override
     public List<UserEmployee> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (List<UserEmployee>)userEmployeeRepository.findAll();
     }
 
     @Override
     public UserEmployee getOne(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return userEmployeeRepository.getOne(id);
     }
 }

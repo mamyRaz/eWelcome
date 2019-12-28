@@ -5,6 +5,7 @@
  */
 package org.ewelcome.repository;
 
+import java.util.List;
 import org.ewelcome.entity.Meeting;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -16,5 +17,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 
 public interface MeetingRepository extends JpaRepository<Meeting, Long>{
-    
+    List<Meeting> findAllByOrderByDateMeeting();
+    Meeting findByIdMeeting(Long id);
 }

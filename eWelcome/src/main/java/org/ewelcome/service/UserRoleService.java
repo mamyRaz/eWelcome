@@ -19,4 +19,5 @@ public interface UserRoleService {
     void delete(Long id);
     List<UserRole> findAll();
     UserRole getOne(Long id);
+    UserRole findByRole(String label);
 }

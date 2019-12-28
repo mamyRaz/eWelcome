@@ -8,11 +8,7 @@ package org.ewelcome.entity;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,7 +32,11 @@ public class Meeting implements Serializable{
     @Id
     //Pour laisser à Spring le soin de générer un identifiant unique.
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long idMeeting;
+    
+    @NotNull
+    @ManyToOne 
+    private UserEmployee meetingHost;
     
     //pour préciser que ce champ ne doit pas rester nul
     @NotNull
@@ -44,31 +44,38 @@ public class Meeting implements Serializable{
     @ManyToOne 
     private TypeMeeting typeMeeting;
     
+    @ManyToOne 
+    private MeetingState meetingState;
+    
     @NotNull
     private Date dateMeeting;
     
     @NotNull
-    private String reason;
+    private String comments;
     
-    //@NotNull
+     
+    
     //Plusieurs rdv ont à une ou plusieurs personnes et vice versa @ManyToMany
     @ManyToMany(mappedBy = "meetingList")
-    private Set<Person> peopleList = new HashSet<>();
+    private List<Person> guestList = new ArrayList<>();
 
-    public String getReason() {
-        return reason;
+    public String getComments() {
+        return comments;
     }
 
-    public void setReason(String reason) {
-        this.reason = reason;
+    public void setComments(String comments) {
+        this.comments = comments;
     }
 
-    public Meeting(TypeMeeting typeMeeting, Date dateMeeting, String reason, List<Person> peopleList) {
+    public Meeting(UserEmployee meetingHost, TypeMeeting typeMeeting, Date dateMeeting, String comments) {
+        this.meetingHost = meetingHost;
         this.typeMeeting = typeMeeting;
         this.dateMeeting = dateMeeting;
-        this.reason = reason;
-        this.peopleList = (Set<Person>) peopleList;
+        this.comments = comments;
+        
     }
+
+   
     
     /*
         Un rdv est une entité donc un bean. Un bean doit 
@@ -82,12 +89,12 @@ public class Meeting implements Serializable{
     
     //setters et getters
 
-    public Long getId() {
-        return id;
+    public Long getIdMeeting() {
+        return idMeeting;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdMeeting(Long idMeeting) {
+        this.idMeeting = idMeeting;
     }
 
     public TypeMeeting getTypeMeeting() {
@@ -106,12 +113,30 @@ public class Meeting implements Serializable{
         this.dateMeeting = dateMeeting;
     }
 
-    public List<Person> getPeopleList() {
-        return (List<Person>) peopleList;
+    public List<Person> getGuestList() {
+        return guestList;
     }
 
-    public void setPeopleList(List<Person> peopleList) {
-        this.peopleList = (Set<Person>) peopleList;
+    public void setGuestList(List<Person> guestList) {
+        this.guestList = guestList;
     }
+
+    public UserEmployee getMeetingHost() {
+        return meetingHost;
+    }
+
+    public void setMeetingHost(UserEmployee meetingHost) {
+        this.meetingHost = meetingHost;
+    }
+
+
+    public MeetingState getMeetingState() {
+        return meetingState;
+    }
+
+    public void setMeetingState(MeetingState meetingState) {
+        this.meetingState = meetingState;
+    }
+    
     
 }

@@ -52,23 +52,25 @@ public class Person implements Serializable {
     @NotNull
     @Size(min = 2, max = 50)
     private String email;
+    
     @NotNull
-    @Size(min = 8, max = 20)
-    
-    
     @Size(min = 8, max = 70)
     private String address;
     
-    @Size(min = 11, max = 11)
+        
     private int telephoneNumber;
     
     
-    @NotNull
+    
     //Une personne appartient à un et un seule role @ManyToOne
     @ManyToOne 
     private UserRole role;
     
-    @NotNull
+    //Une personne visiteur peut avoir plusieurs identifiants @OneToMany
+    @OneToMany(mappedBy = "person")
+    private List<UserVisitor> usersVisitor = new ArrayList<>();
+    
+    
     //Une personne appartient à un et un identifiant employee et vice versa @OneToOne 
     @OneToOne(mappedBy = "person")
     private UserEmployee userEmployee;
@@ -82,18 +84,14 @@ public class Person implements Serializable {
         joinColumns = { @JoinColumn(name = "idPerson") }, 
         inverseJoinColumns = { @JoinColumn(name = "idMeeting") }
     )
-    private Set<Meeting> meetingList  = new HashSet<>();
+    private List<Meeting> meetingList  = new ArrayList<>();
 
-    public Person(String lastName, String firstName, String email, String address, int telephoneNumber, UserRole role, UserEmployee userEmployee, List<Meeting> meetingList) {
+    public Person(String lastName, String firstName, String email, int telephoneNumber, String address) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.email = email;
         this.address = address;
         this.telephoneNumber = telephoneNumber;
-        this.role = role;
-        this.userEmployee = userEmployee;
-//        this.meeting = meeting;
-        this.meetingList = (Set<Meeting>) meetingList;
     }
     
        
@@ -162,7 +160,7 @@ public class Person implements Serializable {
     
     @Override
     public String toString() {
-        return lastName+ " "+firstName+" "+email;
+        return lastName+ " "+firstName+" "+email + " 1 "+ address+ "2 " +telephoneNumber + " 3 " + role;
     }
 
     public UserEmployee getUserEmployee() {
@@ -182,13 +180,11 @@ public class Person implements Serializable {
     }
 */
     public List<Meeting> getMeetingList() {
-        return (List<Meeting>) meetingList;
+        return meetingList;
     }
 
     public void setMeetingList(List<Meeting> meetingList) {
-        this.meetingList = (Set<Meeting>) meetingList;
+        this.meetingList = meetingList;
     }
-    
-    
     
 }

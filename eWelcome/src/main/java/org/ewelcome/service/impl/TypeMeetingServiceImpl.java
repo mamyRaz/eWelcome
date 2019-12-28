@@ -27,21 +27,26 @@ public class TypeMeetingServiceImpl implements TypeMeetingService{
 
     @Override
     public TypeMeeting save(TypeMeeting entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return typeMeetingRepository.save(entity);
     }
 
     @Override
     public void delete(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        typeMeetingRepository.deleteById(id);
     }
 
     @Override
     public List<TypeMeeting> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (List<TypeMeeting>)typeMeetingRepository.findAll();
     }
 
     @Override
     public TypeMeeting getOne(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return typeMeetingRepository.getOne(id);
+    }
+
+    @Override
+    public TypeMeeting findByTypeMeeting(String type) {
+        return typeMeetingRepository.findByLabel(type);
     }
 }

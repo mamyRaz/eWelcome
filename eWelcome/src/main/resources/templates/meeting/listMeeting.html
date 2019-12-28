@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/Ionicons/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/dist/css/skins/skin-blue.min.css">
+
+
+    <div class="container">
+        <div class="box box-solid box-primary" >
+            <div class="box header bg-blue">
+                <h3 class="box-title"><center> Liste de rendez-vous </center> </h3>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Date du rendez-vous</th>
+                        <th scope="col">Personne visitante</th>
+                        <th scope="col">Raison de la visite</th>
+                        <th scope="col">Visiteurs </th>
+                        <th scope="col">Commentaires</th>
+                        <th scope="col">État rendez-vous</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="meeting : ${meetings}">
+                        <td th:text="${meeting.dateMeeting}"></td>
+                        <td th:text="${meeting.meetingHost.person.lastName + ' ' + meeting.meetingHost.person.firstName}"></td>
+                        <td th:text="${meeting.typeMeeting}"></td>
+                        <td>
+                             <li th:each="guest : ${meeting.guestList}">
+                             <span th:text="${guest.lastName + ' ' + guest.firstName}"></span> 
+                             <a th:href="@{/meeting/confirm(id=${guest.id})}" th:text="Valider"></a>    
+                             <a  th:href="@{'/meeting/reject/' + ${guest.id}}" th:text="Refuser"></a>
+                             </li>
+                        </td>
+                        <td th:text="${meeting.comments}"></td>
+                        <td th:text="${meeting.meetingState.label}"></td>
+                        <td>
+                            <div class="btn-group">
+                                <a th:href="@{/meeting/accept(id=${meeting.idMeeting})}" th:text="Confirmer"></a>    
+                                <a  th:href="@{/meeting/cancel(id=${meeting.idMeeting})}" th:text="Annuler"></a>
+                            </div>
+                        </td> 
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</html>

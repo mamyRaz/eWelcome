@@ -84,5 +84,8 @@ public class TypeMeeting implements Serializable {
         this.meetingsList = meetingsList;
     }
     
-    
+    @Override
+    public String toString() {
+        return label;
+    }
 }

@@ -17,7 +17,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
     comme par exemple findAll(), deleteById(ID id), save(S entity)
  */
 
-public interface UserRoleRepository extends JpaRepository<UserEmployee, Long>{
+public interface UserRoleRepository extends JpaRepository<UserRole, Long>{
     public UserRole save(UserRole entity);
+    public UserRole findByLabel(String label);
     
 }

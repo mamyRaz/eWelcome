@@ -22,5 +22,6 @@ public interface MeetingService {
     List<Meeting> findAll();
     Meeting getOne(Long id);
     Optional<Meeting> findById(Long id);
-   // List<Meeting> findAllByDate(Date date);
+    List<Meeting> findAllOrderByDate();
+    Meeting findByIdMeeting(Long id);
 }

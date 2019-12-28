@@ -5,12 +5,11 @@
  */
 package org.ewelcome.service.impl;
 
-import java.sql.Date;
+
 import java.util.List;
 import java.util.Optional;
 import org.ewelcome.entity.Meeting;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.ewelcome.repository.MeetingRepository;
 import org.ewelcome.service.MeetingService;
@@ -30,6 +29,7 @@ public class MeetingServiceImpl implements MeetingService {
     
     @Override
     public Meeting save(Meeting entity) {
+        
         return meetingRepository.save(entity);
     }
 
@@ -59,6 +59,16 @@ public class MeetingServiceImpl implements MeetingService {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     */
+
+    @Override
+    public List<Meeting> findAllOrderByDate() {
+        return meetingRepository.findAllByOrderByDateMeeting();
+    }
+
+    @Override
+    public Meeting findByIdMeeting(Long id) {
+        return meetingRepository.findByIdMeeting(id);
+    }
 
    
     

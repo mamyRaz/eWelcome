@@ -5,9 +5,9 @@
  */
 package org.ewelcome.repository;
 
-import org.ewelcome.entity.UserEmployee;
-import org.springframework.data.jpa.repository.JpaRepository;
 
+import org.ewelcome.entity.MeetingState;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
@@ -15,6 +15,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * L'interface JpaRepository possède déjà un certain nombres de méthodes pour faire des requêtes dans la table, 
     comme par exemple findAll(), deleteById(ID id), save(S entity)
  */
-public interface UserEmployeeRepository extends JpaRepository<UserEmployee, Long>{
-   
+public interface MeetingStateRepository extends JpaRepository<MeetingState, Long>{
+    public MeetingState findByLabel(String label);
 }

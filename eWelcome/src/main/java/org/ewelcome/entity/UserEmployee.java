@@ -7,11 +7,13 @@ package org.ewelcome.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -44,6 +46,9 @@ public class UserEmployee implements Serializable{
    @NotNull
    private String SaltHashPassword;
    
+   // one employee est responsable de un ou de plusieurs rdv
+   @OneToMany(mappedBy = "meetingHost") 
+    private List<Meeting> listOfMeetingsAsResponsable;
    /*
         Un identifiant employee est une entité donc un bean. Un bean doit 
         posséder un contructeur par défaut, afin que Spring puisse l'instancier
@@ -56,7 +61,7 @@ public class UserEmployee implements Serializable{
         this.hashPassword = hashPassword;
         this.SaltHashPassword = SaltHashPassword;
     }
-
+    
    
    //setters et getters
     public Long getId() {
@@ -89,6 +94,14 @@ public class UserEmployee implements Serializable{
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    public List<Meeting> getListOfMeetingsAsResponsable() {
+        return listOfMeetingsAsResponsable;
+    }
+
+    public void setListOfMeetingsAsResponsable(List<Meeting> listOfMeetingsAsResponsable) {
+        this.listOfMeetingsAsResponsable = listOfMeetingsAsResponsable;
     }
 
     

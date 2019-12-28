@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/Ionicons/css/ionicons.min.css">
+
+        <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/dist/css/skins/skin-blue.min.css">
+
+        <title>Nouveau rdv</title>
+    </head>
+    <body>
+        <div class="box">
+            <div class="box box-solid box-primary">
+                <div class="box header bg-blue">
+                    <center>
+                        <h2 class="box-title">Prendre un RDV</h2>
+                    </center>
+                </div>
+                <div class="container">
+                    <form action="#" th:object="${meeting}" method="post" role="form">
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label for="inputPerson">Personne visitante</label>
+                                <br>
+                                 <select name="employeeHost" th:field="*{meetingHost}" required>
+                                    <option th:value="null">Employee</option>
+                                    <option th:each="employee : ${employees}" th:value="${employee.id}" th:text="${employee.person.lastName + ' ' + employee.person.firstName}"></option>
+                                </select>
+                                <input type="hidden" name="person"class="form-control" th:value="${person.lastName}">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-3">
+                                <label for="inputDate">Date de la visite</label>
+                                <input type="date" th:field="*{dateMeeting}" name="startDate"class="form-control" id="inputDate" required>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <label for="exampleInputPassword1">Raison de la visite</label>
+                                <br>
+                                <select name="type" th:field="*{typeMeeting}" required>
+                                    <option th:value="null">Selectionner</option>
+                                    <option th:each="type : ${typesMeeting}" th:value="${type.id}" th:text="${type.label}"></option>
+                                </select>
+                                
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="inputComments">Commentaires</label>
+                                <input type="text" th:field="*{comments}" name="details" class="form-control" placeholder="Détails de votre visite" id="inputComments">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-success" >Confirmer</button>
+                                <a class="btn btn-warning" href="/" role="button">Annuler</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+
+</html>

@@ -15,4 +15,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
     comme par exemple findAll(), deleteById(ID id), save(S entity)
  */
 public interface TypeMeetingRepository extends JpaRepository<TypeMeeting, Long>{
+    public TypeMeeting findByLabel(String typeMeeting);
 }

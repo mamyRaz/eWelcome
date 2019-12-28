@@ -15,8 +15,9 @@ import org.ewelcome.entity.TypeMeeting;
  * On y définit les méthodes dont on a besoin.
  */
 public interface TypeMeetingService {
-    TypeMeeting save(TypeMeeting entity);
-    void delete(Long id);
-    List<TypeMeeting> findAll();
-    TypeMeeting getOne(Long id);
+    public TypeMeeting save(TypeMeeting entity);
+    public void delete(Long id);
+    public List<TypeMeeting> findAll();
+    public TypeMeeting getOne(Long id);
+    public TypeMeeting findByTypeMeeting(String type);
 }

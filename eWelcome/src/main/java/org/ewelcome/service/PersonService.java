@@ -22,4 +22,6 @@ public interface PersonService {
     Optional<Person> findById(Long id);
     Person findByEmail(String courriel);
     Person getOne(Long id);
+    int deleteByEmail(String email);
+    void deleteById(Long id);
 }

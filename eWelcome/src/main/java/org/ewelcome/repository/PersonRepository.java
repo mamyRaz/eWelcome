@@ -7,6 +7,9 @@ package org.ewelcome.repository;
 
 import org.ewelcome.entity.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 /**
  *
@@ -17,6 +20,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface PersonRepository extends JpaRepository<Person, Long>{
     Person findByLastNameAndFirstName(String lastName, String firstName);
     Person findByEmail(String email);
-
+    int deleteByEmail(String email);
+    
+    /*@Modifying
+    @Query("UPDATE person p SET p.address = :address WHERE p.id = :id")
+    int updatePerson(@Param("id") int companyId, @Param("address") String address);*/
     
 }
