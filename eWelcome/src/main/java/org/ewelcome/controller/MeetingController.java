@@ -89,7 +89,7 @@ public class MeetingController {
         meeting.setMeetingState(meetingStateService.findByState("En attente"));
         //On savegarde les objets meeting et person pour pouvir faire la relation many to many
         person.getMeetingList().add(meeting);
-        
+        model.addAttribute("person", person);
         meeting.getGuestList().add(person);
         //On sauvegarde encore une fois pour que les données soient liées et sauvegardées dans la table MatchPersonMeeting
         personService.save(person);

@@ -22,12 +22,13 @@ and open the template in the editor.
             <div class="box box-solid box-primary">
                 <div class="box header bg-blue">
                     <center>
-                        <h2 class="box-title">Demandé de rendez-vous</h2>
+                        <h2 class="box-title">Demande de rendez-vous</h2>
                     </center>
                 </div>
                 <div class="container">
-                    <p>Merci pour votre demandé, il a été bien enregistré une fois confirmé vous receverez la confirmation par email</p>
+                    <p>Merci pour votre demande, il a été bien enregistré une fois confirmé vous receverez la confirmation a votre email : <a th:text="${person.email}"></a></p>
                 </div>
             </div>
+         </div>
     </body>
 </html>
