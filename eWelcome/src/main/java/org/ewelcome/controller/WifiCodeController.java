@@ -85,7 +85,7 @@ public class WifiCodeController {
     (si ses contraintes sont respectées).  Ce comportement est exécuté dans le cas d'une requête HTTP/POST 
     sur /wifi/wifi (engendrée par le formulaire)
     */
-    @PostMapping("/wifi")
+    @PostMapping("/request")
     public String requestedWifi(@Valid WifiCode wifiCode, BindingResult br, Model model, @ModelAttribute("visitor") UserVisitor visitor) {
         if (br.hasErrors()) {
             return "redirect:/wifi/request(idVisitor=${visitor.idVisitor})";
