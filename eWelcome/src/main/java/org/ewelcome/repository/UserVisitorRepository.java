@@ -15,5 +15,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
     comme par exemple findAll(), deleteById(ID id), save(S entity)
  */
 public interface UserVisitorRepository extends JpaRepository<UserVisitor, Long>{
+    UserVisitor findByIdVisitor(Long id);
     
 }

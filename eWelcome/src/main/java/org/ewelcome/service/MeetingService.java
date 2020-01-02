@@ -21,7 +21,6 @@ public interface MeetingService {
     void delete(Long id);
     List<Meeting> findAll();
     Meeting getOne(Long id);
-    Optional<Meeting> findById(Long id);
     List<Meeting> findAllOrderByDate();
     Meeting findByIdMeeting(Long id);
 }

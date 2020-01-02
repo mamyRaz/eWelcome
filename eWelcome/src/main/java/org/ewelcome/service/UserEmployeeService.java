@@ -19,4 +19,5 @@ public interface UserEmployeeService {
     void delete(Long id);
     List<UserEmployee> findAll();
     UserEmployee getOne(Long id);
+    UserEmployee findByIdEmployee(Long id);
 }

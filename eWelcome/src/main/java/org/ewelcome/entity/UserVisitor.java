@@ -7,11 +7,13 @@ package org.ewelcome.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -29,7 +31,7 @@ public class UserVisitor implements Serializable {
    @Id
    //Pour laisser à Spring le soin de générer un identifiant unique.
    @GeneratedValue(strategy = GenerationType.AUTO) 
-   private Long id;
+   private Long idVisitor;
    
    //pour préciser que ce champ ne doit pas rester nul
    @NotNull
@@ -45,6 +47,11 @@ public class UserVisitor implements Serializable {
    
    @NotNull
    private Date initialDate;
+   
+     
+    //Un visiteur peut avoir plusieurs codes wifi @OneToMany
+    @OneToMany(mappedBy = "visitorAuthorized") 
+    private List<WifiCode> listOfWifiCodesUsed;
     
 
     public UserVisitor(Person person, int nbDaysAvailable, int code, Date initialDate) {
@@ -64,12 +71,12 @@ public class UserVisitor implements Serializable {
 
     //setters et getters
     
-    public Long getId() {
-        return id;
+    public Long getIdVisitor() {
+        return idVisitor;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdVisitor(Long idVisitor) {
+        this.idVisitor = idVisitor;
     }
    
     public int getNbDaysAvailable() {
@@ -102,6 +109,14 @@ public class UserVisitor implements Serializable {
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    public List<WifiCode> getListOfWifiCodesUsed() {
+        return listOfWifiCodesUsed;
+    }
+
+    public void setListOfWifiCodesUsed(List<WifiCode> listOfWifiCodesUsed) {
+        this.listOfWifiCodesUsed = listOfWifiCodesUsed;
     }
     
     

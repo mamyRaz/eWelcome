@@ -7,6 +7,7 @@ package org.ewelcome.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
@@ -37,7 +38,8 @@ public class Meeting implements Serializable{
     @NotNull
     @ManyToOne 
     private UserEmployee meetingHost;
-    
+    @NotNull
+    private String hour;
     //pour préciser que ce champ ne doit pas rester nul
     @NotNull
     //Un rdv appartient à une et une seule type rdv @ManyToOne
@@ -67,10 +69,11 @@ public class Meeting implements Serializable{
         this.comments = comments;
     }
 
-    public Meeting(UserEmployee meetingHost, TypeMeeting typeMeeting, Date dateMeeting, String comments) {
+    public Meeting(UserEmployee meetingHost, TypeMeeting typeMeeting, Date dateMeeting, String hour, String comments) {
         this.meetingHost = meetingHost;
         this.typeMeeting = typeMeeting;
         this.dateMeeting = dateMeeting;
+        this.hour = hour;
         this.comments = comments;
         
     }
@@ -136,6 +139,14 @@ public class Meeting implements Serializable{
 
     public void setMeetingState(MeetingState meetingState) {
         this.meetingState = meetingState;
+    }
+
+    public String getHour() {
+        return hour;
+    }
+
+    public void setHour(String hour) {
+        this.hour = hour;
     }
     
     

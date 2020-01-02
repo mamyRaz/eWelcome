@@ -42,4 +42,9 @@ public class UserEmployeeServiceImpl implements UserEmployeeService{
     public UserEmployee getOne(Long id) {
         return userEmployeeRepository.getOne(id);
     }
+
+    @Override
+    public UserEmployee findByIdEmployee(Long id) {
+        return userEmployeeRepository.findByIdEmployee(id);
+    }
 }

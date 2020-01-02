@@ -16,5 +16,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
     comme par exemple findAll(), deleteById(ID id), save(S entity)
  */
 public interface UserEmployeeRepository extends JpaRepository<UserEmployee, Long>{
-   
+   UserEmployee findByIdEmployee(Long id);
 }

@@ -6,29 +6,27 @@ and open the template in the editor.
 -->
 <html>
     <head>
-         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css">
-
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
         <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/Ionicons/css/ionicons.min.css">
-
         <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/dist/css/AdminLTE.min.css">
         <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/dist/css/skins/skin-blue.min.css">
-        <title>Demandé RDV envoyé</title>
+        <title>Accès refusé</title>
     </head>
     <body>
-         <div class="box">
+        <div class="box">
             <div class="box box-solid box-primary">
                 <div class="box header bg-blue">
                     <center>
-                        <h2 class="box-title">Demande de rendez-vous</h2>
-                    </center>
+                        <h3>Accès refusé</h3>
+                    </center>>
                 </div>
                 <div class="container">
-                    <p>Merci pour votre demande, elle a été bien enregistré une fois confirmé vous receverez la confirmation a votre email : <a th:text="${person.email}"></a></p>
+                    <p>Vous devez vous connecter en tant qu'employé pour qu'on puisse traiter votre demande</p>
+                    <a th:text="Se connecter" href="connexion"></a>
                 </div>
             </div>
-         </div>
+        </div>
     </body>
 </html>

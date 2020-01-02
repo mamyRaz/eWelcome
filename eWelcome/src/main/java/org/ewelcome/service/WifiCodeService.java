@@ -7,17 +7,18 @@ package org.ewelcome.service;
 
 import java.util.List;
 import org.ewelcome.entity.UserVisitor;
+import org.ewelcome.entity.WifiCode;
 
 /**
  *
  * @author refin
- * * Couche service, couche intermédiaire
- * On y définit les méthodes dont on a besoin.
  */
-public interface UserVisitorService {
-     UserVisitor save(UserVisitor entity);
+public interface WifiCodeService {
+    WifiCode save(WifiCode entity);
     void delete(Long id);
-    List<UserVisitor> findAll();
-    UserVisitor getOne(Long id);
-    UserVisitor findByIdVisitor(Long id);
+    List<WifiCode> findAll();
+    WifiCode getOne(Long id);
+    List<WifiCode> findByVisitorAuthorized(UserVisitor userVisitor);
+    List<WifiCode> findAllActiveRequest();
+    WifiCode findByIdWifiCode(Long id);
 }

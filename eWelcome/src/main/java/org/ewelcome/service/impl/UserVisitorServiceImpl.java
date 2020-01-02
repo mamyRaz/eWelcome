@@ -25,21 +25,26 @@ public class UserVisitorServiceImpl implements UserVisitorService{
 
     @Override
     public UserVisitor save(UserVisitor entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return userVisitorRepository.save(entity);
     }
 
     @Override
     public void delete(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        userVisitorRepository.deleteById(id);
     }
 
     @Override
     public List<UserVisitor> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (List<UserVisitor>)userVisitorRepository.findAll();
     }
 
     @Override
     public UserVisitor getOne(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return userVisitorRepository.getOne(id);
+    }
+
+    @Override
+    public UserVisitor findByIdVisitor(Long id) {
+        return userVisitorRepository.findByIdVisitor(id);
     }
 }

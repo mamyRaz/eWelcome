@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/Ionicons/css/ionicons.min.css">
+
+    <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/dist/css/skins/skin-blue.min.css">
+    
+    <div class="container">
+        <div class="box box-solid box-primary" >
+            <div class="box header bg-blue">
+                <h3 class="box-title"><center> Liste de demandées pour accéder au réseau WiFi </center> </h3>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Visiteur</th>
+                        <th scope="col">Date prevue de la visite</th>
+                        <th scope="col">Nombre de jours demandés</th>
+                        <th scope="col">État de la demande </th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="request : ${wifiList}">
+                        <td th:text="${request.visitorAuthorized.person.lastName + ' ' + request.visitorAuthorized.person.firstName}"></td>
+                        <td th:text="${request.initialDate}"></td>
+                        <td th:text="${request.numberOfDays}"></td>
+                        <td th:text="${request.state}"></td>
+                        <td>
+                            <div class="btn-group">
+                                <a th:href="@{/wifi/accept(idWifi=${request.idWifiCode})}" th:text="Confirmer"></a>
+                                <a  th:href="@{/wifi/reject(idWifi=${request.idWifiCode})}" th:text="Refuser"></a>
+                            </div>
+                        </td> 
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</html>

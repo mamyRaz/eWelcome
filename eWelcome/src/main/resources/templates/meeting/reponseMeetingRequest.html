@@ -15,7 +15,7 @@ and open the template in the editor.
 
         <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/dist/css/AdminLTE.min.css">
         <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/dist/css/skins/skin-blue.min.css">
-        <title>Demandé RDV envoyé</title>
+        <title>RDV</title>
     </head>
     <body>
          <div class="box">
@@ -26,7 +26,7 @@ and open the template in the editor.
                     </center>
                 </div>
                 <div class="container">
-                    <p>Merci pour votre demande, elle a été bien enregistré une fois confirmé vous receverez la confirmation a votre email : <a th:text="${person.email}"></a></p>
+                    <span type="text" name="message" th:text="${message}"></span>
                 </div>
             </div>
          </div>

@@ -7,9 +7,7 @@ package org.ewelcome.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -59,8 +57,7 @@ public class Person implements Serializable {
     
         
     private int telephoneNumber;
-    
-    
+  
     
     //Une personne appartient à un et un seule role @ManyToOne
     @ManyToOne 

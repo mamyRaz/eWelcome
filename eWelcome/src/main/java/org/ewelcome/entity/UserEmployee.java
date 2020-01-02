@@ -31,7 +31,7 @@ public class UserEmployee implements Serializable{
    @Id
    //Pour laisser à Spring le soin de générer un identifiant unique.
    @GeneratedValue(strategy = GenerationType.AUTO) 
-   private Long id;
+   private Long idEmployee;
    
    
    //pour préciser que ce champ ne doit pas rester nul
@@ -64,12 +64,12 @@ public class UserEmployee implements Serializable{
     
    
    //setters et getters
-    public Long getId() {
-        return id;
+    public Long getIdEmployee() {
+        return idEmployee;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdEmployee(Long idEmployee) {
+        this.idEmployee = idEmployee;
     }
 
     public String getHashPassword() {
