@@ -143,5 +143,11 @@ public class MeetingController {
         return "redirect:/meeting";
     }
    
+    @GetMapping("/planningSecretaire")
+    public String planningSecretaire(Model model) {
+        LOGGER.info("AFFICHEGE PLANNING SECRETAIRE"+meetingService.findAllOrderByDate());
+        model.addAttribute("meetings", meetingService.findAllOrderByDate());        
+        return "secretaire/planningSecretaire";
+    }
 
 }

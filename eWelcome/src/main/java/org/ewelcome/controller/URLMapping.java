@@ -25,10 +25,7 @@ public class URLMapping {
 	public String ajoutUser() {
 		return "admin/ajoutUser";
 	}
-	@GetMapping("/planningSecretaire")
-	public String planningSecretaire() {
-		return "secretaire/planningSecretaire";
-	}
+        
 	@GetMapping("/planningAgent")
 	public String planningAgent() {
 		return "agent/planningAgent";
@@ -44,7 +41,7 @@ public class URLMapping {
 	public String impressionBadgeMDPWifi() {
 		return "visiteur/impressionBadgeMDPWifi";
 	}
-	
+	//DIRIGER LA PAGE VERS LA PRISE DE RDV
 	@GetMapping("/planningPriseRDV")
 	public String planningPriseRDV() {
 		return "visiteur/planningPriseRDV";

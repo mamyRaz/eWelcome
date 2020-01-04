@@ -36,27 +36,19 @@ public class BadgeController {
     private BadgeService badgeService;
     
     private final Logger LOGGER = LoggerFactory.getLogger(MeetingController.class);
-//    @Autowired 
-//    private BadgeService badgeService;
     
     @Autowired 
     private PersonService personService;
-    
-    /*
-    @GetMapping("/afficheVisiteur")
-    public String afficheVisiteur() {
-	return "/badge/afficheVisiteur";
-    }*/
+
     
     @GetMapping("/afficheVisiteur")
 	public String afficheVisiteur(@RequestParam(name = "id") Long id, Model model) {
-            //Long i = Long.valueOf("2");
-//            if (br.hasErrors()) {
-//                return "badge/afficheVisiteur";
-//            }
+
             //RECUPERER LA PERSONNE 
             Person proprioBadge = personService.findById(id).get();
-            LOGGER.info("BADGE : "+proprioBadge.getFirstName() +" "+proprioBadge.getLastName());            
+            LOGGER.info("BADGE : "+proprioBadge.getFirstName() +" "+proprioBadge.getLastName()); 
+            if(proprioBadge == null)
+                return "connexion";
             //CREER LE BADGE           
             Badge badge = new Badge();
             //INITIALISER LE BADGE
@@ -73,6 +65,6 @@ public class BadgeController {
     @PostMapping("/afficheVisiteur")
     public String createBadge(/*, BindingResult br*/) {        
         LOGGER.info("BADGE DEJA CREEER");
-        return "/visiteur/impressionBadgeMDPWifi";//
+        return "redirect:/connexion";//
     }
 }
