@@ -143,11 +143,21 @@ public class MeetingController {
         return "redirect:/meeting";
     }
    
+    //PAGE D'AFFICHAGE DU PLANNING DE LA SECRETAIRE
     @GetMapping("/planningSecretaire")
     public String planningSecretaire(Model model) {
         LOGGER.info("AFFICHEGE PLANNING SECRETAIRE"+meetingService.findAllOrderByDate());
+        //AJOUTER TOUS LES RENDEZ-VOUS (DANS L'ORDRE) DANS LE MODEL POUR L'AFFICHAGE
         model.addAttribute("meetings", meetingService.findAllOrderByDate());        
         return "secretaire/planningSecretaire";
     }
-
+    
+    //PAGE D'AFFICHAGE DU PLANNING DE L'AGENT
+    @GetMapping("/planningAgent")
+    public String planningAgent(Model model) {
+            LOGGER.info("AFFICHEGE PLANNING AGENT"+meetingService.findAllOrderByDate());
+        //AJOUTER TOUS LES RENDEZ-VOUS (DANS L'ORDRE) DANS LE MODEL POUR L'AFFICHAGE
+        model.addAttribute("meetings", meetingService.findAllOrderByDate());        
+        return "agent/planningAgent";
+    }
 }

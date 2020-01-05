@@ -2,31 +2,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/Ionicons/css/ionicons.min.css">
+        <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/dist/css/skins/skin-blue.min.css">
 </head>
 <body>
-	<center>
-		<h5>liste User</h5>
-	</center>
-	<div>
-		<ul class="list-group">
-		  <li class="list-group-item disabled">user</li>
-		  <li class="list-group-item disabled">user</li>
-		  <li class="list-group-item disabled">user</li>
-		  <li class="list-group-item disabled">user</li>
-		  <li class="list-group-item disabled">user</li>
-		  <li class="list-group-item disabled">user</li>
-		  <li class="list-group-item disabled">user</li>
-		  <li class="list-group-item disabled">user</li>
-		  <li class="list-group-item disabled">user</li>
-		</ul>
-	</div>
+	<div class="container">
+        <div class="box box-solid box-primary" >
+            <div class="box header bg-blue">
+                <h3 class="box-title"><center> Liste des Employes </center> </h3>
+            </div>
+        <p>
+
+        </p>
+        <p>
+
+        </p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prenom</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="user : ${users}">
+                      <td th:text="${user.person.lastName}"></td>
+                      <td th:text="${user.person.firstName}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+        <p>
+
+        </p>
+        <p>
+
+        </p>
+    <center>
 	  <div class="col-sm-4">
-	  	<a class="btn btn-success" href="/ajoutUser" role="button">Ajouter</a>
+	  	<a class="btn btn-success" href="/employee/add" role="button">Ajouter</a>
 	  	<a class="btn btn-warning" href="/" role="button">Accueil</a>
-	  </div>
+	 </div>
+    </center> 
 </body>
 </html>

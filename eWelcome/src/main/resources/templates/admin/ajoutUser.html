@@ -6,49 +6,73 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/bower_components/Ionicons/css/ionicons.min.css">
+        <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="https://adminlte.io/themes/AdminLTE/dist/css/skins/skin-blue.min.css">
 </head>
 <body>
 	
-	<center>
-		<h5>Ajout User</h5>
-	</center>
-	<form>
-	  <div class="col-sm-4">
-	    <label for="exampleInputPassword1">Prenom</label>
-	    <input type="text" class="form-control" id="prenom1" placeholder="votre prenom">
-	  </div>
-	  <div class="col-sm-4">
-	    <label for="exampleInputPassword1">Nom</label>
-	    <input type="text" class="form-control" id="nom1" placeholder="votre nom">
-	  </div>
-	  <div class="col-sm-4">
-	    <label for="exampleInputEmail1">Adresse Email</label>
-	    <input type="email" class="form-control" id="eadresseEmail1" aria-describedby="emailHelp" placeholder="votre email">
-	  </div>
-	  <div class="col-sm-4">
-	    <label for="exampleInputPassword1">fonction</label>
-	  </div>
-	  <div class="col-sm-4">
-	    <select name="type">
-		  	<option value = "secretaire">secretaire</option>
-		  	<option value = "agent">agent</option>
-		</select>
-	  </div>
-	  
-	  <div class="col-sm-4">
-	    <label for="exampleInputPassword1">Numero de telephone</label>
-	    <input type="number" class="form-control" id="numeroTelephone1" placeholder="votre numero de telephone">
-	  </div>
-	  <div class="col-sm-4">
-	    <label for="exampleInputPassword1">Adresse de domicile</label>
-	    <input type="text" class="form-control" id="adresseDomicile1" placeholder="votre adresse de domicile">
-	  </div> <!-- plus tard décomposer l'adresse-->
-	  <p>
-	  </p>
-	  <div class="col-sm-4">
-	  	<button type="submit" class="btn btn-success" >Ajouter</button>
-	  	<a class="btn btn-warning" href="/listeUser" role="button">Retour</a>
-	  </div>
-	</form>
+	<div class="container">
+        <div class="box box-solid box-primary" >
+            <div class="box header bg-blue">
+                <h3 class="box-title"><center> Ajouter des Employes </center> </h3>                
+                </div>
+<!--th:oninput="address.value  = addressNumber.value + ' ' + rue.value + ' ' + codePostal.value + ' ' +  complementAddresse.value"-->
+                <form action="#" th:object="${ue}" method="post" role="form" >
+                      <div class="form-row">
+                            <div class="col-sm-4">
+                                <label for="exampleInputPassword1">Prenom</label>
+<!--                                th:field="*{person.LastName}"-->
+                                <input type="text" th:field="*{person.FirstName}" class="form-control" id="firstName" placeholder="votre prenom" required>
+                            </div>
+                         </div>
+                        <div class="form-row">
+                            <div class="col-sm-4">
+                                <label for="exampleInputPassword1">Nom</label>
+<!--th:field="*{person.lastName}"-->                    
+                                <input type="text" th:field="*{person.LastName}" class="form-control" id="lastName" placeholder="votre nom" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-sm-4">
+                                <label for="exampleInputEmail1">Adresse Email</label>
+                                <!--th:field="*{person.email}" -->
+                                <input type="email" th:field="*{person.email}" class="form-control" id="email" aria-describedby="emailHelp" placeholder="votre email" required>
+                            </div>
+                        </div> 
+                        <div class="form-row">
+                            <div class="col-sm-4">
+                                <label for="exampleInputPassword1">Numero de telephone</label>
+                                <!--th:field="*{person.telephoneNumber}"-->
+                                <input class="form-control" th:field="*{person.telephoneNumber}" type="text"  id="numeroTelephone1" placeholder="votre numero de telephone" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <label for="exampleInputPassword1">fonction</label>
+                          </div>
+
+                            <div class="col-sm-4">
+                              <select name="type">
+                                          <option value = "secretaire">secretaire</option>
+                                          <option value = "agent">agent</option>
+                                  </select>
+                            </div>
+                          <div class="col-sm-4">
+                            <label for="exampleInputPassword1">Adresse de domicile</label>
+                            <!--th:field="*{person.adress}"-->
+                            <input  type="text"  class="form-control" id="adresseDomicile1" placeholder="votre adresse de domicile">
+                          </div>
+                    <p>
+                        
+                    </p>
+                        <div class="form-row">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-success" >Continuer</button>
+                                <a class="btn btn-warning" href="/" role="button">Annuler</a>
+                            </div>
+                        </div>
+                    </form>
+            
+        </div>
 </body>
 </html>
