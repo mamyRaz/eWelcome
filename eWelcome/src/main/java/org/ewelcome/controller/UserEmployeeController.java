@@ -48,9 +48,9 @@ public class UserEmployeeController {
     
     @PostMapping("/add")
     public String adding( @Valid UserEmployee ue , Model model) {   
-//        LOGGER.info("AJOUT DEB"); 
-//        userEmployeeService.save(ue);
-//        LOGGER.info("AJOUT FIN");    
+        LOGGER.info("AJOUT DEB"); 
+        userEmployeeService.save(ue);
+        LOGGER.info("AJOUT FIN");    
         return "admin/listeUser";
     }
 }
