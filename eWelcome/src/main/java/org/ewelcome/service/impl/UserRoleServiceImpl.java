@@ -36,7 +36,7 @@ public class UserRoleServiceImpl implements UserRoleService{
 
     @Override
     public List<UserRole> findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return userRoleRepository.findAll();
     }
 
     @Override

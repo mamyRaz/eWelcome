@@ -8,6 +8,7 @@ package org.ewelcome.controller;
 import javax.validation.Valid;
 import org.ewelcome.entity.UserEmployee;
 import org.ewelcome.service.UserEmployeeService;
+import org.ewelcome.service.UserRoleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,11 @@ public class UserEmployeeController {
     
     @Autowired 
     private UserEmployeeService userEmployeeService;
+    
+    
+    @Autowired 
+    private UserRoleService userRoleService;
+    
     @GetMapping("/list")
     public String list( Model model) {            
         LOGGER.info("AFFICHEGE PLANNING SECRETAIRE"+userEmployeeService.findAll());
@@ -41,6 +47,7 @@ public class UserEmployeeController {
     public String add( Model model) {             
         LOGGER.info("FORM AJOUT"); 
         UserEmployee ue =  new UserEmployee();
+        model.addAttribute("role", userRoleService.findAll()); 
         model.addAttribute("ue", ue);             
         LOGGER.info("FORM AJOUT");    
         return "admin/ajoutUser";
@@ -50,7 +57,7 @@ public class UserEmployeeController {
     public String adding( @Valid UserEmployee ue , Model model) {   
         LOGGER.info("AJOUT DEB"); 
         userEmployeeService.save(ue);
-        LOGGER.info("AJOUT FIN");    
-        return "admin/listeUser";
+        LOGGER.info("AJOUT FIN");  
+        return "redirect:/employee/list";
     }
 }

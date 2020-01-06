@@ -53,9 +53,10 @@
 
                             <div class="col-sm-4">
                               <select name="type">
-                                          <option value = "secretaire">secretaire</option>
-                                          <option value = "agent">agent</option>
-                                  </select>
+                                    <option th:each="role : ${role}" th:value="${role.Id}" th:text="${role.label}"></option>
+                                    <option th:value = "null">Fonction</option>
+                              </select>
+                                
                             </div>
                           <div class="col-sm-4">
                             <label for="exampleInputPassword1">Adresse de domicile</label>

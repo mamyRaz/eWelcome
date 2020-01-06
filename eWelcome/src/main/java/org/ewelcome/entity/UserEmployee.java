@@ -41,9 +41,9 @@ public class UserEmployee implements Serializable{
    private Person person;
    
    @NotNull
-   private String hashPassword;
+   private String hashPassword="mot de passe";
    
-   @NotNull
+   //@NotNull
    private String SaltHashPassword;
    
    // one employee est responsable de un ou de plusieurs rdv
